@@ -1,5 +1,6 @@
 # Datasys
 DataSys - Gerenciamento de Alunos. 
+<br>
 Projeto em Java desenvolvido para a A3 dos cursos de TI (1º Sem) da <a href="https://www.usjt.br/">Universidade São Judas Tadeu</a>.
 
 #### Desenvolvido por:
