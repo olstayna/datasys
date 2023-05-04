@@ -9,7 +9,12 @@ import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.sql.Date;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -23,8 +28,8 @@ public class TelaCadastro extends javax.swing.JFrame {
      * Creates new form TelaCadastro
      */
     
-    String nome,sobrenome,username,senha,confirma_senha;
-    Date dob;
+    String nome,sobrenome,senha,confirma_senha;
+    int id = 0;
         
     public TelaCadastro() {
         initComponents();
@@ -35,20 +40,42 @@ public class TelaCadastro extends javax.swing.JFrame {
             Graphics2D g2d = (Graphics2D) g;
             int width = getWidth();
             int height = getHeight();
+            // 0, 204, 204 novo
+            // 97, 216, 222 velho
             
-            Color color1 =  new Color(52,143,80);
-            Color color2 = new Color(86,180,211);
-            GradientPaint gp = new GradientPaint(0,0,color1,180,height,color2);
+            // 153, 0, 153 novo
+            // 189, 60, 199 velho
+            Color color1 =  new Color(97, 216, 222);
+            Color color2 = new Color(189, 60, 199);
+            GradientPaint gp = new GradientPaint(0,0,color2,width,height,color1);
             g2d.setPaint(gp);
             g2d.fillRect(0, 0, width, height);
         }
     }
     
-    boolean validation()
+    public int getId() {
+        try {
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/Aluno","app","123");
+            String sql = "select max(id) from signup";
+            Statement st = con.createStatement();
+            st.executeQuery(sql);
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {         
+                id = rs.getInt(1);
+                id++;
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+    
+    boolean validacao()
     {
         nome = txt_name.getText();
         sobrenome = txt_lastname.getText();
-        username = txt_username.getText();
         senha = txt_password.getText();
         confirma_senha = txt_con_password.getText();
         
@@ -62,13 +89,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this, "Por favor, digite o Sobrenome");
             return false;
-        }
-         
-        if(username.equals(""))
-        {
-            JOptionPane.showMessageDialog(this, "Por favor, digite o RA");
-            return false;
-        }
+        }  
          
         if(senha.equals(""))
         {
@@ -109,6 +130,34 @@ public class TelaCadastro extends javax.swing.JFrame {
         }
     }
     
+    public int getRA() {
+        Random rand = new Random();
+        int randomNumber = rand.nextInt(1000000000);
+        return randomNumber;
+    }
+    
+    void insertDetails() {
+        try {
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/Aluno","app","123");
+            String sql = "insert into signup values(?,?,?,?,?)";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, getId());
+            stmt.setString(2, nome);
+            stmt.setString(3, sobrenome);
+            stmt.setInt(4, getRA());
+            stmt.setString(5, senha);
+            int i = stmt.executeUpdate();
+            if(i>0) {
+                JOptionPane.showMessageDialog(this, "Aluno inserido");
+            } else {
+                JOptionPane.showMessageDialog(this, "Não inserido");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -125,13 +174,13 @@ public class TelaCadastro extends javax.swing.JFrame {
         txt_name = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txt_lastname = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txt_username = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txt_password = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         txt_con_password = new javax.swing.JPasswordField();
         btn_signup = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -140,49 +189,49 @@ public class TelaCadastro extends javax.swing.JFrame {
         lbl_password_error.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(lbl_password_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, 270, 20));
 
+        jPanel1.setBackground(new java.awt.Color(250, 250, 250));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        title.setText("DataSys - Gerenciamento de Alunos");
-        jPanel1.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 60, 430, -1));
+        title.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        title.setForeground(new java.awt.Color(255, 255, 255));
+        title.setText("DataSys");
+        jPanel1.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Nome:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(38, 117, 191));
+        jLabel2.setText("Nome");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, -1, -1));
 
+        txt_name.setBackground(new java.awt.Color(245, 245, 245));
+        txt_name.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 153, 255)));
         txt_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_nameActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 240, 30));
+        jPanel1.add(txt_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, 240, 30));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Sobrenome:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(38, 117, 191));
+        jLabel3.setText("Sobrenome");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, -1, -1));
 
+        txt_lastname.setBackground(new java.awt.Color(245, 245, 245));
+        txt_lastname.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 153, 255)));
         txt_lastname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_lastnameActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 240, 30));
+        jPanel1.add(txt_lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 240, 30));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("R.A.:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, -1, -1));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(38, 117, 191));
+        jLabel5.setText("Senha");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
 
-        txt_username.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_usernameActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 240, 30));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Senha:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, -1, -1));
-
+        txt_password.setBackground(new java.awt.Color(245, 245, 245));
+        txt_password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 153, 255)));
         txt_password.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_passwordKeyPressed(evt);
@@ -191,13 +240,18 @@ public class TelaCadastro extends javax.swing.JFrame {
                 txt_passwordKeyReleased(evt);
             }
         });
-        jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 240, 30));
+        jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 240, 30));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Confirmar senha:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, -1, -1));
-        jPanel1.add(txt_con_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, 240, 30));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(38, 117, 191));
+        jLabel1.setText("Confirmar senha");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, -1, -1));
 
+        txt_con_password.setBackground(new java.awt.Color(245, 245, 245));
+        txt_con_password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 153, 255)));
+        jPanel1.add(txt_con_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, 240, 30));
+
+        btn_signup.setBackground(new java.awt.Color(240, 240, 240));
         btn_signup.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_signup.setText("Cadastrar");
         btn_signup.addActionListener(new java.awt.event.ActionListener() {
@@ -205,9 +259,17 @@ public class TelaCadastro extends javax.swing.JFrame {
                 btn_signupActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, 190, 40));
+        jPanel1.add(btn_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 480, 190, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 590));
+        jPanel2.setBackground(new java.awt.Color(245, 245, 245));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 350, 420));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Gerenciamento de Alunos");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -220,12 +282,10 @@ public class TelaCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_lastnameActionPerformed
 
-    private void txt_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_usernameActionPerformed
-
     private void btn_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_signupActionPerformed
-      validation();
+        if(validacao()) {
+            insertDetails();
+        }
     }//GEN-LAST:event_btn_signupActionPerformed
 
     private void txt_passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_passwordKeyPressed
@@ -276,15 +336,15 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbl_password_error;
     private javax.swing.JLabel title;
     private javax.swing.JPasswordField txt_con_password;
     private javax.swing.JTextField txt_lastname;
     private javax.swing.JTextField txt_name;
     private javax.swing.JPasswordField txt_password;
-    private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables
 }

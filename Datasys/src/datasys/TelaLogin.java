@@ -124,7 +124,7 @@ public class TelaLogin extends javax.swing.JFrame {
             String username=txt_username.getText();
             String password=txt_password.getText();
             
-            if (username.trim().equals("")||password.trim().equals(""))
+            if (username.trim().equals("")|| password.trim().equals(""))
             {
                 message.setText("Por favor, digite o usuário e senha");
             }
