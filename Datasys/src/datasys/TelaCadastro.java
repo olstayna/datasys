@@ -178,14 +178,19 @@ public class TelaCadastro extends javax.swing.JFrame {
         txt_password = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         txt_con_password = new javax.swing.JPasswordField();
-        btn_signup = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        btn_signup = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(870, 600));
-        setSize(new java.awt.Dimension(870, 600));
+        setSize(new java.awt.Dimension(870, 700));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_password_error.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -193,6 +198,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         getContentPane().add(lbl_password_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, 270, 20));
 
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
+        jPanel1.setPreferredSize(new java.awt.Dimension(870, 700));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         title.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
@@ -203,35 +209,25 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(38, 117, 191));
         jLabel2.setText("Nome");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, -1, -1));
 
         txt_name.setBackground(new java.awt.Color(245, 245, 245));
         txt_name.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 153, 255)));
-        txt_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nameActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txt_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, 240, 30));
+        jPanel1.add(txt_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 240, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(38, 117, 191));
         jLabel3.setText("Sobrenome");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, -1, -1));
 
         txt_lastname.setBackground(new java.awt.Color(245, 245, 245));
         txt_lastname.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 153, 255)));
-        txt_lastname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_lastnameActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txt_lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 240, 30));
+        jPanel1.add(txt_lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 240, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(38, 117, 191));
         jLabel5.setText("Senha");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, -1, -1));
 
         txt_password.setBackground(new java.awt.Color(245, 245, 245));
         txt_password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 153, 255)));
@@ -243,16 +239,65 @@ public class TelaCadastro extends javax.swing.JFrame {
                 txt_passwordKeyReleased(evt);
             }
         });
-        jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, 240, 30));
+        jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 240, 30));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(38, 117, 191));
         jLabel1.setText("Confirmar senha");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, -1, -1));
 
         txt_con_password.setBackground(new java.awt.Color(245, 245, 245));
         txt_con_password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 153, 255)));
-        jPanel1.add(txt_con_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 240, 30));
+        jPanel1.add(txt_con_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 240, 30));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel4.setText("CADASTRO");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Gerenciamento de Alunos");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
+
+        jRadioButton1.setForeground(new java.awt.Color(38, 117, 191));
+        jRadioButton1.setText("Masculino");
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 470, -1, -1));
+
+        jRadioButton2.setForeground(new java.awt.Color(38, 117, 191));
+        jRadioButton2.setText("Feminino");
+        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Professor", "Aluno" }));
+        jComboBox1.setSelectedIndex(1);
+        jComboBox1.setSelectedItem(null);
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, 100, 30));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(38, 117, 191));
+        jLabel7.setText("Cargo");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, -1, -1));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADS", "CC", "GTI", "SI", "Design" }));
+        jComboBox2.setSelectedIndex(1);
+        jComboBox2.setSelectedItem(null);
+        jComboBox2.setName("tese"); // NOI18N
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, 100, 30));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(38, 117, 191));
+        jLabel8.setText("Curso");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, -1, -1));
 
         btn_signup.setBackground(new java.awt.Color(51, 153, 255));
         btn_signup.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -265,33 +310,15 @@ public class TelaCadastro extends javax.swing.JFrame {
                 btn_signupActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 190, 40));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 153, 255));
-        jLabel4.setText("CADASTRO");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Gerenciamento de Alunos");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
+        jPanel1.add(btn_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 530, 200, 40));
 
         jPanel2.setBackground(new java.awt.Color(245, 245, 245));
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 350, 450));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 350, 570));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 600));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txt_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nameActionPerformed
-
-    private void txt_lastnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lastnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_lastnameActionPerformed
 
     private void btn_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_signupActionPerformed
         if(validacao()) {
@@ -306,6 +333,14 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void txt_passwordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_passwordKeyReleased
         ChecarSenha();
     }//GEN-LAST:event_txt_passwordKeyReleased
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -344,14 +379,20 @@ public class TelaCadastro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_signup;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JLabel lbl_password_error;
     private javax.swing.JLabel title;
     private javax.swing.JPasswordField txt_con_password;

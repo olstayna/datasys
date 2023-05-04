@@ -61,9 +61,9 @@ public class TelaLogin extends javax.swing.JFrame {
             pst.setString(2, senha);
             ResultSet rs = pst.executeQuery();
             if(rs.next()) {
-                JOptionPane.showMessageDialog(this, "logado");
+                this.dispose();
+                
             } else {
-//                this.dispose();
                 exibirMensagemErro("RA ou senha incorretos.");
             }
         }
