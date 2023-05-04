@@ -53,8 +53,10 @@ public class TelaLogin extends javax.swing.JFrame {
     
     void verificarUsuario(String ra,String senha) {
         try {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/Aluno","app","123");
+//          Class.forName("org.apache.derby.jdbc.ClientDriver");
+//          Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/Aluno","app","123");
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/datasys","root","");
             String sql = "SELECT * FROM login WHERE ra=? AND senha=?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, ra);

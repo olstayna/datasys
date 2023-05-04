@@ -28,7 +28,7 @@ public class TelaCadastro extends javax.swing.JFrame {
      * Creates new form TelaCadastro
      */
     
-    String nome,sobrenome,senha,confirma_senha;
+    String nome,sobrenome,senha,confirma_senha, curso, cargo, genero;
     int id = 0;
         
     public TelaCadastro() {
@@ -55,8 +55,10 @@ public class TelaCadastro extends javax.swing.JFrame {
     
     public int getId() {
         try {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/Aluno","app","123");
+//          Class.forName("org.apache.derby.jdbc.ClientDriver");
+//          Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/Aluno","app","123");
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/datasys","root","");
             String sql = "select max(id) from login";
             Statement st = con.createStatement();
             st.executeQuery(sql);
@@ -78,6 +80,11 @@ public class TelaCadastro extends javax.swing.JFrame {
         sobrenome = txt_lastname.getText();
         senha = txt_password.getText();
         confirma_senha = txt_con_password.getText();
+        curso = box_curso.getSelectedItem() == null ? "" : box_curso.getSelectedItem().toString();
+        cargo = box_cargo.getSelectedItem() == null ? "" : box_cargo.getSelectedItem().toString();
+        genero = rb_masculino.getText(); 
+        genero = rb_feminino.getText();
+        
         
         if(nome.equals(""))
         {
@@ -114,6 +121,24 @@ public class TelaCadastro extends javax.swing.JFrame {
             return false;
         }
         
+        if (curso.equals("")) 
+        {
+            JOptionPane.showMessageDialog(this, "Por favor, selecione o Curso");
+            return false;
+        }
+
+        if (cargo.equals("")) 
+        {
+            JOptionPane.showMessageDialog(this, "Por favor, selecione o Cargo");
+            return false;
+        }
+        
+        if (!rb_masculino.isSelected() && !rb_feminino.isSelected()) 
+        {
+            JOptionPane.showMessageDialog(this, "Por favor, selecione uma opção de gênero");
+            return false;
+        }
+
         return true;
     }
     
@@ -138,15 +163,20 @@ public class TelaCadastro extends javax.swing.JFrame {
     
     void insertDetails() {
         try {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/Aluno","app","123");
-            String sql = "insert into login values(?,?,?,?,?)";
+//          Class.forName("org.apache.derby.jdbc.ClientDriver");
+//          Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/Aluno","app","123");
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/datasys","root","");
+            String sql = "insert into login values(?,?,?,?,?,?,?,?)";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, getId());
             stmt.setString(2, nome);
             stmt.setString(3, sobrenome);
             stmt.setString(4, senha);
             stmt.setInt(5, getRA());
+            stmt.setString(6, curso);
+            stmt.setString(7, cargo);
+            stmt.setString(8, genero);
             int i = stmt.executeUpdate();
             if(i>0) {
                 JOptionPane.showMessageDialog(this, "Aluno inserido");
@@ -167,6 +197,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         lbl_password_error = new javax.swing.JLabel();
         jPanel1 = new jPanelGradient();
         title = new javax.swing.JLabel();
@@ -180,11 +211,11 @@ public class TelaCadastro extends javax.swing.JFrame {
         txt_con_password = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        rb_masculino = new javax.swing.JRadioButton();
+        rb_feminino = new javax.swing.JRadioButton();
+        box_cargo = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        box_curso = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         btn_signup = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -260,39 +291,41 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel6.setText("Gerenciamento de Alunos");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
 
-        jRadioButton1.setForeground(new java.awt.Color(38, 117, 191));
-        jRadioButton1.setText("Masculino");
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 470, -1, -1));
+        buttonGroup1.add(rb_masculino);
+        rb_masculino.setForeground(new java.awt.Color(38, 117, 191));
+        rb_masculino.setText("Masculino");
+        jPanel1.add(rb_masculino, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 470, -1, -1));
 
-        jRadioButton2.setForeground(new java.awt.Color(38, 117, 191));
-        jRadioButton2.setText("Feminino");
-        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, -1, -1));
+        buttonGroup1.add(rb_feminino);
+        rb_feminino.setForeground(new java.awt.Color(38, 117, 191));
+        rb_feminino.setText("Feminino");
+        jPanel1.add(rb_feminino, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Professor", "Aluno" }));
-        jComboBox1.setSelectedIndex(1);
-        jComboBox1.setSelectedItem(null);
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        box_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Professor", "Aluno" }));
+        box_cargo.setSelectedIndex(1);
+        box_cargo.setSelectedItem(null);
+        box_cargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                box_cargoActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, 100, 30));
+        jPanel1.add(box_cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, 100, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(38, 117, 191));
         jLabel7.setText("Cargo");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADS", "CC", "GTI", "SI", "Design" }));
-        jComboBox2.setSelectedIndex(1);
-        jComboBox2.setSelectedItem(null);
-        jComboBox2.setName("tese"); // NOI18N
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        box_curso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADS", "CC", "GTI", "SI", "Design" }));
+        box_curso.setSelectedIndex(1);
+        box_curso.setSelectedItem(null);
+        box_curso.setName("tese"); // NOI18N
+        box_curso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                box_cursoActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, 100, 30));
+        jPanel1.add(box_curso, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, 100, 30));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(38, 117, 191));
@@ -334,13 +367,13 @@ public class TelaCadastro extends javax.swing.JFrame {
         ChecarSenha();
     }//GEN-LAST:event_txt_passwordKeyReleased
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void box_cargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box_cargoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_box_cargoActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void box_cursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box_cursoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_box_cursoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -378,9 +411,10 @@ public class TelaCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> box_cargo;
+    private javax.swing.JComboBox<String> box_curso;
     private javax.swing.JButton btn_signup;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -391,9 +425,9 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JLabel lbl_password_error;
+    private javax.swing.JRadioButton rb_feminino;
+    private javax.swing.JRadioButton rb_masculino;
     private javax.swing.JLabel title;
     private javax.swing.JPasswordField txt_con_password;
     private javax.swing.JTextField txt_lastname;
