@@ -10,7 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Timer;
 import java.util.TimerTask;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class TelaLogin extends javax.swing.JFrame {
