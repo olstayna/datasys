@@ -42,27 +42,40 @@ public class ConexaoDB {
         return randomNumber;
     }
     
-    public void insertDetails(Integer getId, String nome, String sobrenome, String senha, Integer getRA, String curso, String cargo, String logradouro, String cidade, String estado, String numero, String complemento, String bairro) {
+    public void insertDetails(String nome,
+            String sobrenome,
+            String senha,
+            String email,
+            String telefone,
+            String curso,
+            String cargo,
+            String logradouro,
+            String cidade,
+            String bairro,
+            String estado,
+            String numero,
+            String complemento) {
+        
         try {
-//          Class.forName("org.apache.derby.jdbc.ClientDriver");
-//          Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/Aluno","app","123");
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(url, usuario, senha);
-            String sql = "insert into login values(?,?,?,?,?,?,?,?,9,9,9,9,9)";
+            String sql = "insert into login values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, getId());
             stmt.setString(2, nome);
             stmt.setString(3, sobrenome);
             stmt.setString(4, senha);
-            stmt.setInt(5, getRA());
-            stmt.setString(6, curso);
-            stmt.setString(7, cargo);
-            stmt.setString(8, logradouro);
-            stmt.setString(9, cidade);
-            stmt.setString(10, bairro);
-            stmt.setString(11, estado);
-            stmt.setString(12, numero);
-            stmt.setString(13, complemento);
+            stmt.setString(5, email);
+            stmt.setString(6, telefone);
+            stmt.setInt(7, getRA());
+            stmt.setString(8, curso);
+            stmt.setString(9, cargo);
+            stmt.setString(10, logradouro);
+            stmt.setString(11, cidade);
+            stmt.setString(12, bairro);
+            stmt.setString(13, estado);
+            stmt.setString(14, numero);
+            stmt.setString(15, complemento);
             int i = stmt.executeUpdate();
             if(i>0) {
                 JOptionPane.showMessageDialog(null, "Aluno inserido");
