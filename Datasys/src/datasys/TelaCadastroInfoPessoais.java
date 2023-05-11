@@ -144,17 +144,17 @@ public class TelaCadastroInfoPessoais extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         txt_name = new javax.swing.JTextField();
         txt_password = new javax.swing.JPasswordField();
         txt_con_password = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         box_cargo = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
         box_curso = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
         btn_signup = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
         txt_lastname = new javax.swing.JTextField();
         campoTelefone = new javax.swing.JFormattedTextField();
         txt_email = new javax.swing.JTextField();
@@ -181,27 +181,42 @@ public class TelaCadastroInfoPessoais extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(38, 117, 191));
         jLabel2.setText("Nome");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 145, -1, 20));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(38, 117, 191));
         jLabel3.setText("Sobrenome");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 205, -1, 20));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(38, 117, 191));
         jLabel5.setText("Senha");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 265, -1, 20));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(38, 117, 191));
         jLabel9.setText("Email");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 385, -1, 20));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(38, 117, 191));
         jLabel1.setText("Confirmar senha");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 325, -1, 20));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(38, 117, 191));
+        jLabel10.setText("Telefone Celular");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, 90, 20));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(38, 117, 191));
+        jLabel8.setText("Curso");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 520, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(38, 117, 191));
+        jLabel7.setText("Cargo");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 520, -1, -1));
 
         txt_name.setBackground(new java.awt.Color(245, 245, 245));
         txt_name.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 153, 255)));
@@ -233,9 +248,8 @@ public class TelaCadastroInfoPessoais extends javax.swing.JFrame {
         jLabel6.setText("Gerenciamento de Alunos");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
 
-        box_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Professor", "Aluno" }));
-        box_cargo.setSelectedIndex(1);
-        box_cargo.setSelectedItem(null);
+        box_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aluno", "Professor" }));
+        box_cargo.setFocusable(false);
         box_cargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 box_cargoActionPerformed(evt);
@@ -243,14 +257,8 @@ public class TelaCadastroInfoPessoais extends javax.swing.JFrame {
         });
         jPanel1.add(box_cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 540, 100, 30));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(38, 117, 191));
-        jLabel7.setText("Cargo");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 520, -1, -1));
-
         box_curso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADS", "CC", "GTI", "SI", "Design" }));
-        box_curso.setSelectedIndex(1);
-        box_curso.setSelectedItem(null);
+        box_curso.setFocusable(false);
         box_curso.setName("tese"); // NOI18N
         box_curso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,11 +266,6 @@ public class TelaCadastroInfoPessoais extends javax.swing.JFrame {
             }
         });
         jPanel1.add(box_curso, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 540, 100, 30));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(38, 117, 191));
-        jLabel8.setText("Curso");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 520, -1, -1));
 
         btn_signup.setBackground(new java.awt.Color(51, 153, 255));
         btn_signup.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -276,11 +279,6 @@ public class TelaCadastroInfoPessoais extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 600, 200, 40));
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(38, 117, 191));
-        jLabel10.setText("Telefone Celular");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, 90, 20));
 
         txt_lastname.setBackground(new java.awt.Color(245, 245, 245));
         txt_lastname.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 153, 255)));
@@ -297,6 +295,7 @@ public class TelaCadastroInfoPessoais extends javax.swing.JFrame {
             e.printStackTrace();
         }
         campoTelefone = new javax.swing.JFormattedTextField(mascaraTelefone);
+        campoTelefone.setSelectedTextColor(new java.awt.Color(245, 245, 245));
         campoTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoTelefoneActionPerformed(evt);
@@ -323,7 +322,7 @@ public class TelaCadastroInfoPessoais extends javax.swing.JFrame {
 
     private void btn_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_signupActionPerformed
         if(validacao()) {
-            
+            this.dispose();
             
             new TelaCadastroEndereço().setVisible(true);
         }
