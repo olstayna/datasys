@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04-Maio-2023 às 18:35
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.1.6
+-- Generation Time: May 21, 2023 at 06:31 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,46 +18,85 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `datasys`
+-- Database: `datasys`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `login`
+-- Table structure for table `endereco`
+--
+
+CREATE TABLE `endereco` (
+  `ID` int(11) NOT NULL,
+  `RA` int(9) NOT NULL,
+  `LOGRADOURO` varchar(30) NOT NULL,
+  `CIDADE` varchar(30) NOT NULL,
+  `NUMERO` varchar(5) NOT NULL,
+  `ESTADO` varchar(2) NOT NULL,
+  `BAIRRO` varchar(20) NOT NULL,
+  `COMPLEMENTO` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `endereco`
+--
+
+INSERT INTO `endereco` (`ID`, `RA`, `LOGRADOURO`, `CIDADE`, `NUMERO`, `ESTADO`, `BAIRRO`, `COMPLEMENTO`) VALUES
+(1, 77573487, 'abc', 'sbc', '421', 'SP', 'ass', ''),
+(2, 572527674, 'abc', 'sbc', '214', 'SP', 'sad', ''),
+(3, 151797601, 'abc', 'sbc', '421', 'SP', 'ass', ''),
+(4, 777587089, 'abc', 'santo andre', '941', 'SP', 'sas', ''),
+(5, 489469869, 'abc', 'sbc', '421', 'SP', 'dsad', 'as'),
+(6, 365175707, 'testando alo', 'sao bernardo', '2 2 2', 'SP', 'bairro sei la', 'teste a a');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login`
 --
 
 CREATE TABLE `login` (
   `ID` int(11) NOT NULL,
+  `RA` int(9) NOT NULL,
   `NOME` varchar(100) DEFAULT NULL,
   `SOBRENOME` varchar(100) DEFAULT NULL,
   `SENHA` varchar(25) DEFAULT NULL,
-  `RA` int(11) DEFAULT NULL,
-  `CURSO` varchar(10) NOT NULL,
-  `CARGO` varchar(10) NOT NULL,
-  `GENERO` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `EMAIL` varchar(50) DEFAULT NULL,
+  `TELEFONE` varchar(15) DEFAULT NULL,
+  `CURSO` varchar(10) DEFAULT NULL,
+  `CARGO` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `login`
+-- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`ID`, `NOME`, `SOBRENOME`, `SENHA`, `RA`, `CURSO`, `CARGO`, `GENERO`) VALUES
-(1, 'Teste', 'MySQL', '12345678', 176961653, '', '', ''),
-(2, 'Teste', 'Inserindo', '12345678', 287528812, 'ADS', 'Professor', ''),
-(3, 'Teste', 'Teste', '12345678', 792679399, 'ADS', 'Professor', ''),
-(4, 'Teste', 'Combo', '12345678', 794591509, 'ADS', 'Professor', ''),
-(5, 'Testando', 'Genero', '12345678', 991922941, 'CC', 'Professor', 'Feminino');
+INSERT INTO `login` (`ID`, `RA`, `NOME`, `SOBRENOME`, `SENHA`, `EMAIL`, `TELEFONE`, `CURSO`, `CARGO`) VALUES
+(1, 77573487, 'lorenzo', 'casa', 'asdasdasd', 'gostoso@gmail.com', '321321321', 'SI', 'Aluno'),
+(2, 572527674, 'gustavo', 'barbero', 'asdasdasd', 'gostoso@gmail.com', '42141241', 'ADS', 'Aluno'),
+(3, 151797601, ' carol', 'dal mas', 'asdasdasd', 'gostosa@gmail.com', '4124124', 'SI', 'Aluno'),
+(4, 777587089, 'edgard', 'dsada', 'asdasdasd', 'gostoso@gmail.com', '4214124', 'SI', 'Professor'),
+(5, 489469869, 'DSA', 'DSAD', 'ASDASDASD', 'DSADAS', 'DSADSA', 'CC', 'Aluno'),
+(6, 365175707, 'Testando', 'Da Silva', 'asdasd asd', 'testando ? asdsa', '421 4214', 'SI', 'Professor');
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices para tabela `login`
+-- Indexes for table `endereco`
+--
+ALTER TABLE `endereco`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `RA` (`RA`);
+
+--
+-- Indexes for table `login`
 --
 ALTER TABLE `login`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `RA` (`RA`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
