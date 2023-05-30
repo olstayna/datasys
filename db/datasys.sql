@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2023 at 06:31 PM
+-- Generation Time: May 30, 2023 at 08:32 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -46,9 +46,7 @@ INSERT INTO `endereco` (`ID`, `RA`, `LOGRADOURO`, `CIDADE`, `NUMERO`, `ESTADO`, 
 (1, 77573487, 'abc', 'sbc', '421', 'SP', 'ass', ''),
 (2, 572527674, 'abc', 'sbc', '214', 'SP', 'sad', ''),
 (3, 151797601, 'abc', 'sbc', '421', 'SP', 'ass', ''),
-(4, 777587089, 'abc', 'santo andre', '941', 'SP', 'sas', ''),
-(5, 489469869, 'abc', 'sbc', '421', 'SP', 'dsad', 'as'),
-(6, 365175707, 'testando alo', 'sao bernardo', '2 2 2', 'SP', 'bairro sei la', 'teste a a');
+(4, 810540035, 'rua pedro', 'cidade bial', '13', 'SC', 'bairro peal', 'faz o l');
 
 -- --------------------------------------------------------
 
@@ -76,9 +74,7 @@ INSERT INTO `login` (`ID`, `RA`, `NOME`, `SOBRENOME`, `SENHA`, `EMAIL`, `TELEFON
 (1, 77573487, 'lorenzo', 'casa', 'asdasdasd', 'gostoso@gmail.com', '321321321', 'SI', 'Aluno'),
 (2, 572527674, 'gustavo', 'barbero', 'asdasdasd', 'gostoso@gmail.com', '42141241', 'ADS', 'Aluno'),
 (3, 151797601, ' carol', 'dal mas', 'asdasdasd', 'gostosa@gmail.com', '4124124', 'SI', 'Aluno'),
-(4, 777587089, 'edgard', 'dsada', 'asdasdasd', 'gostoso@gmail.com', '4214124', 'SI', 'Professor'),
-(5, 489469869, 'DSA', 'DSAD', 'ASDASDASD', 'DSADAS', 'DSADSA', 'CC', 'Aluno'),
-(6, 365175707, 'Testando', 'Da Silva', 'asdasd asd', 'testando ? asdsa', '421 4214', 'SI', 'Professor');
+(4, 810540035, 'pedro', 'pintudo', 'asdasdasd', 'pedrinhomatador@gmail.com', '1231241421', 'GTI', 'Professor');
 
 --
 -- Indexes for dumped tables

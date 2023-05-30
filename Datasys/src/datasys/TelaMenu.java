@@ -21,8 +21,6 @@ public class TelaMenu extends javax.swing.JFrame {
         }
     }
     
-    
-    
     public TelaMenu() {
         initComponents();
     }
@@ -282,10 +280,11 @@ public class TelaMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    TelaGerenciamento gerenciamento = new TelaGerenciamento();
+    
     private void panel_consultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_consultarMouseClicked
         this.dispose();
-        TelaConsulta consulta = new TelaConsulta();
-        consulta.setVisible(true);
+        gerenciamento.setVisible(true);
     }//GEN-LAST:event_panel_consultarMouseClicked
 
     private void panel_cadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_cadastrarMouseClicked
@@ -296,14 +295,12 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void panel_alterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_alterarMouseClicked
         this.dispose();
-        TelaAlteração alterar = new TelaAlteração();
-        alterar.setVisible(true);
+        gerenciamento.setVisible(true);
     }//GEN-LAST:event_panel_alterarMouseClicked
 
     private void panel_excluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_excluirMouseClicked
         this.dispose();
-        TelaExclusão excluir = new TelaExclusão();
-        excluir.setVisible(true);
+        gerenciamento.setVisible(true);
     }//GEN-LAST:event_panel_excluirMouseClicked
 
     public static void main(String args[]) {
