@@ -21,6 +21,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         
     public TelaCadastro() {
         initComponents();
+        Utils util = new Utils();
+        util.setIconImage(this);
     }
     
     class jPanelGradient extends JPanel {
@@ -187,20 +189,22 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         panel_tela.setRequestFocusEnabled(false);
 
-        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasys/images/Logo Datasys.png"))); // NOI18N
+        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
 
-        label_descricao.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        label_descricao.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         label_descricao.setForeground(new java.awt.Color(255, 255, 255));
-        label_descricao.setText("Gerenciamento de Alunos");
+        label_descricao.setText("<html><p>Gerenciamento de Alunos</p></html>");
 
         panel_campos.setBackground(new java.awt.Color(245, 245, 245));
 
         lbl_title.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         lbl_title.setForeground(new java.awt.Color(102, 153, 255));
+        lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_title.setText("CADASTRO");
 
         lbl_endereco.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl_endereco.setForeground(new java.awt.Color(102, 153, 255));
+        lbl_endereco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_endereco.setText("Informações pessoais");
 
         lbl_nome.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -314,35 +318,32 @@ public class TelaCadastro extends javax.swing.JFrame {
                                     .addComponent(box_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(btn_continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panel_camposLayout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addGroup(panel_camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_title)
-                            .addComponent(lbl_endereco)))
+                        .addGap(75, 75, 75)
+                        .addComponent(campoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel_camposLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
-                        .addGroup(panel_camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_sobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panel_camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_nome, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                            .addComponent(txt_sobrenome, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                             .addComponent(lbl_sobrenome)
-                            .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_senha, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                             .addComponent(lxl_con_senha)
                             .addComponent(lbl_email)
-                            .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_email, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                             .addComponent(lbl_senha)
-                            .addComponent(txt_con_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_con_senha, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                             .addComponent(lbl_nome)
-                            .addComponent(lbl_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panel_camposLayout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(campoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lbl_telefone, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                            .addComponent(lbl_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbl_endereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         panel_camposLayout.setVerticalGroup(
             panel_camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_camposLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(20, 20, 20)
                 .addComponent(lbl_title)
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_endereco)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(lbl_nome)
@@ -402,18 +403,18 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(panel_telaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_voltar)
                     .addGroup(panel_telaLayout.createSequentialGroup()
-                        .addGroup(panel_telaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panel_telaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(panel_telaLayout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addComponent(image))
-                                .addComponent(lbl_password_error, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(151, 151, 151)
+                        .addComponent(lbl_password_error, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_telaLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(panel_telaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panel_telaLayout.createSequentialGroup()
-                                .addComponent(label_descricao)
-                                .addGap(10, 10, 10)))
-                        .addGap(75, 75, 75)
-                        .addComponent(panel_campos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                                .addGap(33, 33, 33)
+                                .addComponent(image)))))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(panel_campos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
         );
         panel_telaLayout.setVerticalGroup(
             panel_telaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -422,11 +423,11 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(panel_telaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_telaLayout.createSequentialGroup()
                         .addComponent(lbl_voltar)
-                        .addGap(134, 134, 134)
-                        .addComponent(label_descricao)
-                        .addGap(10, 10, 10)
+                        .addGap(81, 81, 81)
+                        .addComponent(label_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(image)
-                        .addGap(41, 41, 41)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl_password_error, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(panel_campos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(50, Short.MAX_VALUE))

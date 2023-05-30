@@ -23,6 +23,8 @@ public class TelaMenu extends javax.swing.JFrame {
     
     public TelaMenu() {
         initComponents();
+        Utils util = new Utils();
+        util.setIconImage(this);
     }
 
     @SuppressWarnings("unchecked")
@@ -49,13 +51,13 @@ public class TelaMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu - Datasys");
 
-        lbl_title.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lbl_title.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lbl_title.setForeground(new java.awt.Color(255, 255, 255));
         lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_title.setText("Menu");
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasys/images/Logo Datasys.png"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
 
         panel_opcoes.setBackground(new java.awt.Color(248, 248, 248));
 

@@ -10,14 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class TelaGerenciamento extends javax.swing.JFrame {
@@ -25,6 +20,8 @@ public class TelaGerenciamento extends javax.swing.JFrame {
     public TelaGerenciamento() {
         initComponents();
         User_Load();
+        Utils util = new Utils();
+        util.setIconImage(this);
     }
     
     class jPanelGradient extends JPanel {
@@ -116,7 +113,7 @@ public class TelaGerenciamento extends javax.swing.JFrame {
         title.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         title.setForeground(new java.awt.Color(255, 255, 255));
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasys/images/Logo Datasys.png"))); // NOI18N
+        title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
 
         lbl_descricao.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lbl_descricao.setForeground(new java.awt.Color(255, 255, 255));
@@ -195,8 +192,10 @@ public class TelaGerenciamento extends javax.swing.JFrame {
             panel_telaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_telaLayout.createSequentialGroup()
                 .addContainerGap(50, Short.MAX_VALUE)
+                .addComponent(lbl_voltar13)
                 .addGroup(panel_telaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panel_telaLayout.createSequentialGroup()
+                        .addGap(63, 63, 63)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addGroup(panel_telaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -204,13 +203,12 @@ public class TelaGerenciamento extends javax.swing.JFrame {
                             .addComponent(btn_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(50, 50, 50))
-                    .addGroup(panel_telaLayout.createSequentialGroup()
-                        .addComponent(lbl_voltar13)
-                        .addGap(18, 18, 18)
-                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_telaLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(lbl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74))))
+                        .addGap(10, 10, 10)
+                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         getContentPane().add(panel_tela, java.awt.BorderLayout.CENTER);
@@ -405,17 +403,7 @@ public class TelaGerenciamento extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_descricao;
-    private javax.swing.JLabel lbl_voltar10;
-    private javax.swing.JLabel lbl_voltar11;
-    private javax.swing.JLabel lbl_voltar12;
     private javax.swing.JLabel lbl_voltar13;
-    private javax.swing.JLabel lbl_voltar3;
-    private javax.swing.JLabel lbl_voltar4;
-    private javax.swing.JLabel lbl_voltar5;
-    private javax.swing.JLabel lbl_voltar6;
-    private javax.swing.JLabel lbl_voltar7;
-    private javax.swing.JLabel lbl_voltar8;
-    private javax.swing.JLabel lbl_voltar9;
     private javax.swing.JPanel panel_tela;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables

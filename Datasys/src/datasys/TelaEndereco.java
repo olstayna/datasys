@@ -20,6 +20,8 @@ public class TelaEndereco extends javax.swing.JFrame {
     
     public TelaEndereco() {
         initComponents();
+        Utils util = new Utils();
+        util.setIconImage(this);
     }
 
     class jPanelGradient extends JPanel {
@@ -213,7 +215,7 @@ public class TelaEndereco extends javax.swing.JFrame {
 
         title.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         title.setForeground(new java.awt.Color(255, 255, 255));
-        title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasys/images/Logo Datasys.png"))); // NOI18N
+        title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
 
         javax.swing.GroupLayout panel_telaLayout = new javax.swing.GroupLayout(panel_tela);
         panel_tela.setLayout(panel_telaLayout);
