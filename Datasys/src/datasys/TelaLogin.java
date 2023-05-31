@@ -26,11 +26,6 @@ public class TelaLogin extends javax.swing.JFrame {
             Graphics2D g2d = (Graphics2D) g;
             int width = getWidth();
             int height = getHeight();
-            // 175, 213, 170
-            // 97, 216, 222 velho
-            
-            // 166, 159, 152
-            // 189, 60, 199 velho
             Color color1 =  new Color(97, 216, 222);
             Color color2 = new Color(189, 60, 199);
             GradientPaint gp = new GradientPaint(0,0,color2,width,height,color1);
@@ -79,7 +74,6 @@ public class TelaLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         panel_tela = new jPanelGradient();
-        title = new javax.swing.JLabel();
         message = new javax.swing.JLabel();
         panel_campos = new javax.swing.JPanel();
         lbl_title = new javax.swing.JLabel();
@@ -98,10 +92,6 @@ public class TelaLogin extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(580, 450));
 
         panel_tela.setBackground(new java.awt.Color(250, 250, 250));
-
-        title.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        title.setForeground(new java.awt.Color(255, 255, 255));
-        title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasys/images/Logo Datasys.png"))); // NOI18N
 
         message.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         message.setForeground(new java.awt.Color(255, 0, 0));
@@ -193,17 +183,12 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGroup(panel_telaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_telaLayout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addGroup(panel_telaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panel_telaLayout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(title)))
+                        .addComponent(lbl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75)
                         .addComponent(message))
                     .addGroup(panel_telaLayout.createSequentialGroup()
                         .addGap(101, 101, 101)
-                        .addComponent(title1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(title1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addComponent(panel_campos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
@@ -218,9 +203,7 @@ public class TelaLogin extends javax.swing.JFrame {
                         .addGap(50, 50, 50)
                         .addComponent(lbl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(title1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(title))
+                        .addComponent(title1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel_telaLayout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addComponent(panel_campos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -263,7 +246,6 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel message;
     private javax.swing.JPanel panel_campos;
     private javax.swing.JPanel panel_tela;
-    private javax.swing.JLabel title;
     private javax.swing.JLabel title1;
     private javax.swing.JPasswordField txt_senha;
     private javax.swing.JTextField txt_username;

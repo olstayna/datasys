@@ -54,7 +54,6 @@ public class TelaGerenciamento extends javax.swing.JFrame {
 
             ResultSetMetaData rsd = rs.getMetaData();
             ResultSetMetaData rsd1 = rs1.getMetaData();
-            int c = rsd.getColumnCount() + rsd1.getColumnCount();
 
             d = (DefaultTableModel) jTable1.getModel();
             d.setRowCount(0);
@@ -236,9 +235,9 @@ public class TelaGerenciamento extends javax.swing.JFrame {
 
                 ResultSetMetaData rsd = rs.getMetaData();
                 ResultSetMetaData rsd1 = rs1.getMetaData();
-                int c = rsd.getColumnCount() + rsd1.getColumnCount();
 
                 d = (DefaultTableModel) jTable1.getModel();
+                d.setColumnCount(rsd.getColumnCount() + rsd1.getColumnCount());
                 d.setRowCount(0);
                 
                 if (rs.next() && rs1.next()) {
@@ -246,12 +245,10 @@ public class TelaGerenciamento extends javax.swing.JFrame {
 
                     for (int i = 1; i <= rsd.getColumnCount(); i++) {
                         v.add(rs.getObject(i));
-                        d.setRowCount(0);
                    }
 
                     for (int i = 1; i <= rsd1.getColumnCount(); i++) {
                         v.add(rs1.getObject(i));
-                        d.setRowCount(0);
                     }
 
                     d.addRow(v);
@@ -266,8 +263,6 @@ public class TelaGerenciamento extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "RA Inválido");
         }
     }
-    
-    
     
     private void editarAluno() {                                           
         PreparedStatement pst;
@@ -302,7 +297,7 @@ public class TelaGerenciamento extends javax.swing.JFrame {
                 pst1.setInt(7, ra);
                 pst.executeUpdate();
                 pst1.executeUpdate();
-                JOptionPane.showMessageDialog(null, "user details edited successfully...");
+                JOptionPane.showMessageDialog(null, "Aluno alterado com sucesso!");
 
                 User_Load();
             } else {
