@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://github.com/olstayna/datasys/assets/67444028/2c8deac3-e196-45a8-bcc7-f5a9bcdcefb6" width="300px">
+</div>
+
 # Datasys
 DataSys - Gerenciamento de Alunos. 
 <br>
@@ -30,3 +34,8 @@ Para o desenvolvimento do projeto, foi utilizado:
 
 #### *Observação:
 Arquivo JAR necessário para execução do projeto: <a href="https://jar-download.com/artifacts/mysql/mysql-connector-java/5.1.49/source-code">mysql-connector-java-5.1.49.jar</a>
+
+## Preview
+<div align="center">
+  <img src="https://github.com/olstayna/datasys/assets/67444028/b43b8337-a37b-4816-9cc0-94dd645493cd">
+</div>
