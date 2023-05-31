@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JPanel;
@@ -48,7 +49,7 @@ public class TelaLogin extends javax.swing.JFrame {
     
     private void verificarUsuario(String ra,String senha) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            TelaMenu menu = new TelaMenu();
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/datasys","root","");
             String sql = "SELECT * FROM login WHERE ra=? AND senha=?";
             PreparedStatement pst = con.prepareStatement(sql);
@@ -57,13 +58,12 @@ public class TelaLogin extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();
             if(rs.next()) {
                 this.dispose();
-                
+                menu.setVisible(true);
             } else {
                 exibirMensagemErro("RA ou senha incorretos.");
             }
         }
-        catch(Exception e)
-        {
+        catch(SQLException e) {
             e.printStackTrace();
         }     
     }
@@ -218,13 +218,12 @@ public class TelaLogin extends javax.swing.JFrame {
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         String ra = txt_username.getText();
         String senha = txt_senha.getText();
-        TelaMenu menu = new TelaMenu();
         
         if(ra.equals("") || senha.equals("")) {
             exibirMensagemErro("Por favor, digite o nome ou RA.");
         } else {
             verificarUsuario(ra, senha);
-            menu.setVisible(true);
+
         }
     }//GEN-LAST:event_btn_loginActionPerformed
 
