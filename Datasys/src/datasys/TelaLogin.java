@@ -59,6 +59,9 @@ public class TelaLogin extends javax.swing.JFrame {
             if(rs.next()) {
                 this.dispose();
                 menu.setVisible(true);
+                UserSession.getInstance().setLoggedInUser(ra);
+                String username = UserSession.getInstance().getLoggedInUser();
+                TelaMenu.nome_usuario.setText("RA: "+username);
             } else {
                 exibirMensagemErro("RA ou senha incorretos.");
             }
@@ -92,9 +95,12 @@ public class TelaLogin extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(580, 450));
 
         panel_tela.setBackground(new java.awt.Color(250, 250, 250));
+        setSize(811,481);
+        setLocationRelativeTo(null);
 
         message.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         message.setForeground(new java.awt.Color(255, 0, 0));
+        message.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         panel_campos.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -183,22 +189,20 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGroup(panel_telaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_telaLayout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addComponent(lbl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)
-                        .addComponent(message))
+                        .addComponent(lbl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel_telaLayout.createSequentialGroup()
                         .addGap(101, 101, 101)
                         .addComponent(title1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addComponent(panel_campos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75)
+                .addGroup(panel_telaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(message, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panel_campos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         panel_telaLayout.setVerticalGroup(
             panel_telaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_telaLayout.createSequentialGroup()
                 .addGroup(panel_telaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_telaLayout.createSequentialGroup()
-                        .addGap(380, 380, 380)
-                        .addComponent(message))
                     .addGroup(panel_telaLayout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(lbl_descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,7 +211,9 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addGroup(panel_telaLayout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addComponent(panel_campos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         getContentPane().add(panel_tela, java.awt.BorderLayout.CENTER);
@@ -223,7 +229,6 @@ public class TelaLogin extends javax.swing.JFrame {
             exibirMensagemErro("Por favor, digite o nome ou RA.");
         } else {
             verificarUsuario(ra, senha);
-
         }
     }//GEN-LAST:event_btn_loginActionPerformed
 

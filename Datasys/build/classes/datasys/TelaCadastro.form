@@ -33,6 +33,7 @@
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new jPanelGradient()"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="setSize(835,703);&#xa;setLocationRelativeTo(null);"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">

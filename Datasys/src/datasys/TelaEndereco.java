@@ -66,6 +66,9 @@ public class TelaEndereco extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(870, 590));
 
+        setSize(787,531);
+        setLocationRelativeTo(null);
+
         panel_campos.setBackground(new java.awt.Color(245, 245, 245));
 
         box_estado.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N

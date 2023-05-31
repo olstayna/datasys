@@ -22,6 +22,7 @@ public class TelaGerenciamento extends javax.swing.JFrame {
         User_Load();
         Utils util = new Utils();
         util.setIconImage(this);
+        
     }
     
     class jPanelGradient extends JPanel {
@@ -90,9 +91,13 @@ public class TelaGerenciamento extends javax.swing.JFrame {
         btn_alterar = new javax.swing.JButton();
         btn_excluir = new javax.swing.JButton();
         lbl_voltar13 = new javax.swing.JLabel();
+        nome_usuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Excluir - Datasys");
+
+        setSize(956,494);
+        setLocationRelativeTo(null);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -166,6 +171,9 @@ public class TelaGerenciamento extends javax.swing.JFrame {
             }
         });
 
+        nome_usuario.setForeground(new java.awt.Color(255, 255, 255));
+        nome_usuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
         javax.swing.GroupLayout panel_telaLayout = new javax.swing.GroupLayout(panel_tela);
         panel_tela.setLayout(panel_telaLayout);
         panel_telaLayout.setHorizontalGroup(
@@ -184,14 +192,17 @@ public class TelaGerenciamento extends javax.swing.JFrame {
                         .addComponent(btn_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1)
+                    .addComponent(nome_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(50, 50, 50))
         );
         panel_telaLayout.setVerticalGroup(
             panel_telaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_telaLayout.createSequentialGroup()
                 .addContainerGap(50, Short.MAX_VALUE)
-                .addComponent(lbl_voltar13)
+                .addGroup(panel_telaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbl_voltar13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nome_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(panel_telaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panel_telaLayout.createSequentialGroup()
                         .addGap(63, 63, 63)
@@ -360,9 +371,11 @@ public class TelaGerenciamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_excluirActionPerformed
 
     private void lbl_voltar13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_voltar13MouseClicked
-        this.dispose();
+        this.setVisible(false);
         TelaMenu menu = new TelaMenu();
         menu.setVisible(true);
+        String username = UserSession.getInstance().getLoggedInUser();
+        TelaMenu.nome_usuario.setText("RA: "+username);
     }//GEN-LAST:event_lbl_voltar13MouseClicked
 
     public static void main(String args[]) {
@@ -387,6 +400,13 @@ public class TelaGerenciamento extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaGerenciamento().setVisible(true);
+                if(UserSession.getInstance().isLoggedIn()) {
+                    String username = UserSession.getInstance().getLoggedInUser();
+                    nome_usuario.setText(username);
+                    TelaMenu.nome_usuario.setText(username);
+                } else {
+                    System.exit(0);
+                }
             }
         });
     }
@@ -399,6 +419,7 @@ public class TelaGerenciamento extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_descricao;
     private javax.swing.JLabel lbl_voltar13;
+    public static javax.swing.JLabel nome_usuario;
     private javax.swing.JPanel panel_tela;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables

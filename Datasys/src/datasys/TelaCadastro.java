@@ -188,6 +188,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(870, 700));
 
         panel_tela.setRequestFocusEnabled(false);
+        setSize(835,703);
+        setLocationRelativeTo(null);
 
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
 
@@ -459,6 +461,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         this.dispose();
         TelaMenu menu = new TelaMenu();
         menu.setVisible(true);
+        String username = UserSession.getInstance().getLoggedInUser();
+        TelaMenu.nome_usuario.setText("RA: "+username);
     }//GEN-LAST:event_lbl_voltarMouseClicked
 
     public static void main(String args[]) {
