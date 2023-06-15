@@ -326,30 +326,38 @@ public class TelaGerenciamento extends javax.swing.JFrame {
 
         if (selectIndex != -1) {
             int ra = (int) d.getValueAt(selectIndex, 0);
+            String raSelecionado = d.getValueAt(selectIndex, 0).toString();
+            String username = UserSession.getInstance().getLoggedInUser();
 
             int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir este aluno?", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION);
 
             if (confirm == JOptionPane.YES_OPTION) {
-                try {
-                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost/datasys", "root", "");
-                    PreparedStatement pst = con.prepareStatement("DELETE FROM login WHERE RA=?");
-                    PreparedStatement pst1 = con.prepareStatement("DELETE FROM endereco WHERE RA=?");
+                if(raSelecionado.equals(username)) {
+                    JOptionPane.showMessageDialog(null, "O usuário logado não pode ser excluído.");
+                } else {
+                    
+                    try {
 
-                    pst.setInt(1, ra);
-                    pst1.setInt(1, ra);
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/datasys", "root", "");
+                        PreparedStatement pst = con.prepareStatement("DELETE FROM login WHERE RA=?");
+                        PreparedStatement pst1 = con.prepareStatement("DELETE FROM endereco WHERE RA=?");
 
-                    int rowsAffected1 = pst1.executeUpdate();
-                    int rowsAffected2 = pst.executeUpdate();
+                        pst.setInt(1, ra);
+                        pst1.setInt(1, ra);
 
-                    if (rowsAffected1 > 0 && rowsAffected2 > 0) {
-                        JOptionPane.showMessageDialog(null, "Aluno excluído com sucesso");
-                        User_Load();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Erro ao excluir aluno");
+                        int rowsAffected1 = pst1.executeUpdate();
+                        int rowsAffected2 = pst.executeUpdate();
+
+                        if (rowsAffected1 > 0 && rowsAffected2 > 0) {
+                                JOptionPane.showMessageDialog(null, "Aluno excluído ");
+                                User_Load();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Erro ao excluir aluno");
+                        }
+
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Erro ao excluir aluno: " + ex.getMessage());
                     }
-
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Erro ao excluir aluno: " + ex.getMessage());
                 }
             }
         } else {
