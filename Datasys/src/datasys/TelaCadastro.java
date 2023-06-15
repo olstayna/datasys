@@ -87,6 +87,9 @@ public class TelaCadastro extends javax.swing.JFrame {
         if (senha.length()<8) {
             lbl_password_error.setText("A senha deve possuir 8 caracteres");
         }
+        if(senha.length() > 20) {
+            lbl_password_error.setText("A senha deve possuir até 20 caracteres");
+        }
         if (!senha.equals(confirma_senha)) {
             JOptionPane.showMessageDialog(this, "As senhas devem ser iguais");
             return false;
