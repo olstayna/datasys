@@ -228,42 +228,35 @@ public class TelaGerenciamento extends javax.swing.JFrame {
 
     private void consultarAluno() {
         PreparedStatement pst;
-        PreparedStatement pst1;
         ResultSet rs;
-        ResultSet rs1;
         DefaultTableModel d;
-        String ra = JOptionPane.showInputDialog(null, "Digite o RA do aluno:");
-        
-        if(ra != null && !ra.isEmpty()) {
+        String raOuNome = JOptionPane.showInputDialog(null, "Digite o RA ou o nome do aluno:");
+
+        if (raOuNome != null && !raOuNome.isEmpty()) {
             try {
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost/datasys", "root", "");
-                pst = con.prepareStatement("SELECT RA, NOME, SOBRENOME, EMAIL, TELEFONE, CURSO, CARGO FROM login WHERE ra = ?");
-                pst1 = con.prepareStatement("SELECT LOGRADOURO, CIDADE, NUMERO, ESTADO, BAIRRO, COMPLEMENTO FROM endereco WHERE ra = ?");
-                pst.setString(1, ra);
-                pst1.setString(1, ra);
+                pst = con.prepareStatement("SELECT l.RA, l.NOME, l.SOBRENOME, l.EMAIL, l.TELEFONE, l.CURSO, l.CARGO, e.LOGRADOURO, e.CIDADE, e.NUMERO, e.ESTADO, e.BAIRRO, e.COMPLEMENTO FROM login l JOIN endereco e ON l.RA = e.RA WHERE l.ra = ? OR l.NOME = ?");
+                pst.setString(1, raOuNome);
+                pst.setString(2, raOuNome);
                 rs = pst.executeQuery();
-                rs1 = pst1.executeQuery();
 
                 ResultSetMetaData rsd = rs.getMetaData();
-                ResultSetMetaData rsd1 = rs1.getMetaData();
 
                 d = (DefaultTableModel) jTable1.getModel();
-                d.setColumnCount(rsd.getColumnCount() + rsd1.getColumnCount());
+                d.setColumnCount(rsd.getColumnCount());
                 d.setRowCount(0);
-                
-                if (rs.next() && rs1.next()) {
+
+                while (rs.next()) {
                     Vector<Object> v = new Vector<>();
 
                     for (int i = 1; i <= rsd.getColumnCount(); i++) {
                         v.add(rs.getObject(i));
-                   }
-
-                    for (int i = 1; i <= rsd1.getColumnCount(); i++) {
-                        v.add(rs1.getObject(i));
                     }
 
                     d.addRow(v);
-                } else {
+                }
+
+                if (d.getRowCount() == 0) {
                     JOptionPane.showMessageDialog(null, "Aluno não encontrado");
                 }
             } catch (SQLException e) {
@@ -271,9 +264,11 @@ public class TelaGerenciamento extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Erro ao consultar aluno: " + e.getMessage());
             }
         } else {
-            JOptionPane.showMessageDialog(null, "RA Inválido");
+            JOptionPane.showMessageDialog(null, "RA ou nome inválido");
         }
     }
+
+
     
     private void editarAluno() {                                           
         PreparedStatement pst;
